@@ -108,8 +108,10 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  /* Prevent layout shift from scrollbar appearing */
-  overflow-y: scroll;
+  /* scrollbar-gutter reserves scrollbar space without setting overflow,
+     so position: sticky still references the viewport as its scroll
+     container (overflow-y: scroll on html would break this). */
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -118,7 +120,11 @@ body {
   font-family: var(--font);
   font-size: var(--type-base);
   line-height: var(--leading-base);
-  overflow-x: hidden;
+  /* overflow: clip hides horizontal overflow without creating a new
+     scroll container — unlike overflow: hidden, it does NOT implicitly
+     change overflow-y to 'auto', which would make body the scroll
+     container and silently break position: sticky on descendants. */
+  overflow-x: clip;
   /* Default cursor hidden globally — custom cursor is in use */
   cursor: none;
 }
@@ -403,14 +409,20 @@ ul {
 }
 
 /* Individual project entry.
-   align-items: start is critical for position: sticky
-   to work inside a grid — without it, the grid stretches
-   both cells to equal height and sticky has nothing to scroll. */
+   Flexbox + align-items: flex-start is the most cross-browser-reliable
+   layout for position: sticky sidebars.
+
+   Why flexbox over grid:
+   - align-items: flex-start ensures the left column's box is only as
+     tall as its content, giving sticky room to scroll within the row.
+   - Unlike grid, flex doesn't have "grid area" containing-block quirks
+     that trip up sticky in some browsers.
+   - The flex container height = right column height (tallest child),
+     which is the full scroll range the left sticky can travel. */
 .project {
   border-top: 1px solid var(--color-divider-hard);
-  display: grid;
-  grid-template-columns: var(--project-col-left) 1fr;
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
   padding: 0 var(--page-gutter);
   cursor: none;
 }
@@ -418,11 +430,17 @@ ul {
 /* ---- LEFT COLUMN (sticky) ---- */
 
 .project__left {
+  /* Fixed width — matches the old 30% grid column */
+  width: var(--project-col-left);
+  flex-shrink: 0;
   padding-top: var(--sp-12);
   padding-bottom: var(--sp-12);
   padding-right: var(--col-gap);
   position: sticky;
   top: calc(var(--header-height) + var(--sp-6));
+  /* align-self: flex-start mirrors the parent's align-items,
+     stated explicitly for maximum browser compatibility */
+  align-self: flex-start;
 }
 
 .project__title {
@@ -472,6 +490,10 @@ ul {
 /* ---- RIGHT COLUMN (media) ---- */
 
 .project__right {
+  /* flex: 1 takes remaining width; min-width: 0 prevents a flex item
+     from overflowing its container when children are wide */
+  flex: 1;
+  min-width: 0;
   padding-top: var(--sp-12);
   padding-bottom: var(--sp-12);
   padding-left: var(--col-gap);
@@ -608,14 +630,16 @@ ul {
     --project-col-left:     100%;
   }
 
-  /* Project grid: single column */
+  /* Stack columns vertically on mobile */
   .project {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 
   .project__left {
-    /* Disable sticky on mobile — no room to scroll alongside */
+    /* Full width and no sticky on mobile */
+    width: 100%;
     position: static;
+    align-self: auto;
     padding-top: var(--sp-8);
     padding-bottom: var(--sp-4);
     padding-right: 0;
