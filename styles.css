@@ -318,6 +318,7 @@ ul {
   z-index: var(--z-header);
   display: flex;
   align-items: center;
+  background-color: var(--color-bg);
 }
 
 .site-header__inner {
@@ -328,11 +329,25 @@ ul {
   padding: 0 var(--page-gutter);
 }
 
+/* Left group: name + role inline */
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
 .site-header__name {
   font-size: var(--type-sm);
   letter-spacing: var(--tracking-wide);
   font-weight: 400;
   color: var(--color-text);
+}
+
+.site-header__role {
+  font-size: var(--type-sm);
+  letter-spacing: var(--tracking-wide);
+  font-weight: 400;
+  color: var(--color-text-muted);
 }
 
 .site-header__nav {
@@ -356,90 +371,38 @@ ul {
 
 
 /* ============================================================
-   5. HERO
-   Full-viewport opening screen. Name/role centered.
-============================================================ */
-
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.hero__content {
-  flex: 1;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: var(--header-height);
-}
-
-.hero__text {
-  text-align: center;
-}
-
-.hero__name {
-  font-family: var(--font);
-  font-size: var(--type-display);
-  font-weight: 400;
-  letter-spacing: var(--tracking-tighter);
-  line-height: var(--leading-tight);
-  color: var(--color-text);
-}
-
-.hero__role {
-  font-size: var(--type-sm);
-  letter-spacing: var(--tracking-wider);
-  color: var(--color-text-muted);
-  margin-top: var(--sp-3);
-  font-weight: 400;
-}
-
-
-/* ============================================================
-   6. PROJECTS
+   5. PROJECTS
    Stacked vertical sections, each with a 2-column
    layout: sticky left info, scrollable right media.
 ============================================================ */
 
+/* First project clears the fixed header; subsequent projects
+   rely on their own top padding for spacing. */
 .projects {
-  margin-top: var(--sp-24);
+  padding-top: var(--header-height);
 }
 
 /* Individual project entry.
    Flexbox + align-items: flex-start is the most cross-browser-reliable
    layout for position: sticky sidebars.
 
-   Why flexbox over grid:
-   - align-items: flex-start ensures the left column's box is only as
-     tall as its content, giving sticky room to scroll within the row.
-   - Unlike grid, flex doesn't have "grid area" containing-block quirks
-     that trip up sticky in some browsers.
-   - The flex container height = right column height (tallest child),
-     which is the full scroll range the left sticky can travel. */
+   Vertical padding lives here on the article so both columns
+   share the same breathing room without duplication. */
 .project {
-  border-top: 1px solid var(--color-divider-hard);
   display: flex;
   align-items: flex-start;
-  padding: 0 var(--page-gutter);
+  padding: var(--sp-16) var(--page-gutter);
   cursor: none;
 }
 
 /* ---- LEFT COLUMN (sticky) ---- */
 
 .project__left {
-  /* Fixed width — matches the old 30% grid column */
   width: var(--project-col-left);
   flex-shrink: 0;
-  padding-top: var(--sp-12);
-  padding-bottom: var(--sp-12);
   padding-right: var(--col-gap);
   position: sticky;
   top: calc(var(--header-height) + var(--sp-6));
-  /* align-self: flex-start mirrors the parent's align-items,
-     stated explicitly for maximum browser compatibility */
   align-self: flex-start;
 }
 
@@ -490,12 +453,8 @@ ul {
 /* ---- RIGHT COLUMN (media) ---- */
 
 .project__right {
-  /* flex: 1 takes remaining width; min-width: 0 prevents a flex item
-     from overflowing its container when children are wide */
   flex: 1;
   min-width: 0;
-  padding-top: var(--sp-12);
-  padding-bottom: var(--sp-12);
   padding-left: var(--col-gap);
   display: flex;
   flex-direction: column;
@@ -636,20 +595,21 @@ ul {
   }
 
   .project__left {
-    /* Full width and no sticky on mobile */
     width: 100%;
     position: static;
     align-self: auto;
-    padding-top: var(--sp-8);
-    padding-bottom: var(--sp-4);
     padding-right: 0;
+    /* Extra bottom padding separates info from media on mobile */
+    padding-bottom: var(--sp-4);
   }
 
   .project__right {
-    padding-top: var(--sp-1);
-    padding-bottom: var(--sp-8);
     padding-left: 0;
     gap: var(--sp-3);
+  }
+
+  .project {
+    padding: var(--sp-8) var(--page-gutter);
   }
 
   .project__description {
@@ -682,14 +642,15 @@ ul {
 ============================================================ */
 
 @media (max-width: 480px) {
-  .site-header__name {
+  .site-header__name,
+  .site-header__role {
     font-size: var(--type-xs);
     letter-spacing: var(--tracking-base);
   }
 
-  .hero__role {
-    font-size: var(--type-xs);
-    letter-spacing: var(--tracking-wide);
+  /* Hide the role on very small screens to avoid header crowding */
+  .site-header__role {
+    display: none;
   }
 }
 
