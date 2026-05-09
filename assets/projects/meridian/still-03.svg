@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="m3-neon-r" cx="35%" cy="52%" r="20%">
+      <stop offset="0%" stop-color="#e03030" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#180808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="m3-neon-b" cx="62%" cy="48%" r="18%">
+      <stop offset="0%" stop-color="#2060c0" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#080818" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Night exterior  near black -->
+  <rect width="1920" height="1080" fill="#0c0808"/>
+
+  <!-- Neon glow pools -->
+  <rect width="1920" height="1080" fill="url(#m3-neon-r)"/>
+  <rect width="1920" height="1080" fill="url(#m3-neon-b)"/>
+
+  <!-- Motel sign  "MOTEL" in red neon tubes -->
+  <!-- Sign box -->
+  <rect x="580" y="180" width="380" height="120" fill="#1a0808" opacity="0.9"/>
+  <rect x="590" y="190" width="360" height="100" fill="#200c0c" opacity="0.7"/>
+  <!-- Neon tube letters  simplified red glowing lines -->
+  <!-- M -->
+  <line x1="620" y1="210" x2="620" y2="270" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <line x1="620" y1="210" x2="648" y2="245" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <line x1="648" y1="245" x2="676" y2="210" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <line x1="676" y1="210" x2="676" y2="270" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <!-- O -->
+  <rect x="696" y="210" width="50" height="60" fill="none" stroke="#ff2020" stroke-width="4" rx="2" opacity="0.85"/>
+  <!-- T -->
+  <line x1="763" y1="210" x2="813" y2="210" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <line x1="788" y1="210" x2="788" y2="270" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <!-- E -->
+  <line x1="832" y1="210" x2="832" y2="270" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <line x1="832" y1="210" x2="882" y2="210" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <line x1="832" y1="240" x2="872" y2="240" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <line x1="832" y1="270" x2="882" y2="270" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <!-- L -->
+  <line x1="900" y1="210" x2="900" y2="270" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+  <line x1="900" y1="270" x2="940" y2="270" stroke="#ff2020" stroke-width="4" opacity="0.85"/>
+
+  <!-- Sign glow on ground -->
+  <ellipse cx="770" cy="380" rx="250" ry="40" fill="#e02020" opacity="0.08"/>
+
+  <!-- Room windows  blue TV light from one -->
+  <rect x="200" y="360" width="140" height="100" fill="#081018" opacity="0.95"/>
+  <rect x="420" y="360" width="140" height="100" fill="#0c1828" opacity="0.85"/>
+  <!-- TV light flickering  blue rectangle -->
+  <rect x="432" y="372" width="116" height="76" fill="#1838a0" opacity="0.25"/>
+
+  <rect x="640" y="360" width="140" height="100" fill="#080808" opacity="0.95"/>
+  <rect x="860" y="360" width="140" height="100" fill="#060606" opacity="0.95"/>
+
+  <!-- Ground  wet asphalt with neon reflections -->
+  <rect x="0" y="700" width="1920" height="380" fill="#0c0a0a"/>
+  <line x1="0" y1="700" x2="1920" y2="700" stroke="#200808" stroke-width="1"/>
+  <!-- Reflection of red neon on wet asphalt -->
+  <ellipse cx="770" cy="800" rx="200" ry="30" fill="#e02020" opacity="0.07"/>
+  <ellipse cx="1200" cy="820" rx="150" ry="20" fill="#2060c0" opacity="0.06"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">meridian  still 03  motel exterior, neon</text>
+</svg>

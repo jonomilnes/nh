@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="p4-toplight" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#c0884a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#180c06" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Dark cobblestone night -->
+  <rect width="1920" height="1080" fill="#160a04"/>
+  <rect width="1920" height="1080" fill="url(#p4-toplight)"/>
+
+  <!-- Cobblestone pattern  low angle, perspective -->
+  <!-- Row 1 (near, large) -->
+  <rect x="60" y="820" width="180" height="110" rx="0" fill="#200e06" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <rect x="260" y="820" width="180" height="110" fill="#1e0c05" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <rect x="460" y="820" width="180" height="110" fill="#220f07" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <rect x="660" y="820" width="180" height="110" fill="#1e0c05" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <rect x="860" y="820" width="180" height="110" fill="#220f07" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <rect x="1060" y="820" width="180" height="110" fill="#1e0c05" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <rect x="1260" y="820" width="180" height="110" fill="#220f07" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <rect x="1460" y="820" width="180" height="110" fill="#1e0c05" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <rect x="1660" y="820" width="260" height="110" fill="#220f07" stroke="#2a1208" stroke-width="2" opacity="0.7"/>
+  <!-- Row 2 (mid-near) -->
+  <rect x="0" y="730" width="140" height="86" fill="#1e0c05" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="150" y="730" width="140" height="86" fill="#200e06" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="300" y="730" width="140" height="86" fill="#1c0b04" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="450" y="730" width="140" height="86" fill="#200e06" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="600" y="730" width="140" height="86" fill="#1e0c05" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="750" y="730" width="140" height="86" fill="#1c0b04" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="900" y="730" width="140" height="86" fill="#200e06" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="1050" y="730" width="140" height="86" fill="#1e0c05" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="1200" y="730" width="140" height="86" fill="#1c0b04" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="1350" y="730" width="140" height="86" fill="#200e06" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="1500" y="730" width="140" height="86" fill="#1e0c05" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <rect x="1650" y="730" width="270" height="86" fill="#1c0b04" stroke="#281006" stroke-width="1" opacity="0.6"/>
+  <!-- Row 3 (mid) -->
+  <rect x="0" y="660" width="100" height="66" fill="#1c0b04" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="108" y="660" width="100" height="66" fill="#1e0d05" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="216" y="660" width="100" height="66" fill="#1a0a03" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="324" y="660" width="100" height="66" fill="#1e0d05" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="432" y="660" width="100" height="66" fill="#1a0a03" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="540" y="660" width="100" height="66" fill="#1c0b04" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="648" y="660" width="100" height="66" fill="#1a0a03" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="756" y="660" width="100" height="66" fill="#1e0d05" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="864" y="660" width="100" height="66" fill="#1c0b04" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="972" y="660" width="100" height="66" fill="#1a0a03" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+  <rect x="1080" y="660" width="100" height="66" fill="#1e0d05" stroke="#240e04" stroke-width="1" opacity="0.5"/>
+
+  <!-- Light pool from street lamp (off-frame, top-right) -->
+  <ellipse cx="1400" cy="820" rx="300" ry="120" fill="#c0804a" opacity="0.08"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">parallels  still 04  low angle, cobblestone</text>
+</svg>

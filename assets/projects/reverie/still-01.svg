@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="r1-light" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4ede6"/>
+      <stop offset="100%" stop-color="#d8cec4"/>
+    </linearGradient>
+    <radialGradient id="r1-window" cx="80%" cy="0%" r="55%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#e8e0d8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="r1-soft">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <!-- Ivory studio wall -->
+  <rect width="1920" height="1080" fill="url(#r1-light)"/>
+  <!-- Soft north light from upper right -->
+  <rect width="1920" height="1080" fill="url(#r1-window)"/>
+
+  <!-- Window  upper right, suggested by bright patch -->
+  <rect x="1480" y="0" width="440" height="360" fill="#f0ece6" opacity="0.5"/>
+  <rect x="1480" y="0" width="440" height="360" fill="#ffffff" opacity="0.2"/>
+  <!-- Window frame lines  very subtle -->
+  <line x1="1700" y1="0" x2="1700" y2="360" stroke="#d8d0c8" stroke-width="6" opacity="0.4"/>
+  <line x1="1480" y1="180" x2="1920" y2="180" stroke="#d8d0c8" stroke-width="6" opacity="0.4"/>
+
+  <!-- Floor  slightly warmer -->
+  <rect x="0" y="800" width="1920" height="280" fill="#cec4ba"/>
+  <line x1="0" y1="800" x2="1920" y2="800" stroke="#c0b8b0" stroke-width="1" opacity="0.5"/>
+
+  <!-- Floor shadow  long and soft, from figure out of frame -->
+  <polygon points="600,800 860,800 1100,1080 360,1080" fill="#b8b0a8" opacity="0.22" filter="url(#r1-soft)"/>
+
+  <!-- Fabric  draped on chair/stool, right third -->
+  <path d="M 1400 700 Q 1500 720 1580 680 Q 1650 660 1720 710 Q 1800 750 1880 720 L 1920 780 L 1920 900 Q 1820 880 1700 920 Q 1580 940 1450 900 Q 1380 870 1380 800 Z" fill="#e8e2dc" opacity="0.75"/>
+  <path d="M 1420 720 Q 1500 740 1560 700 Q 1640 680 1700 730" stroke="#d0cac4" stroke-width="2" fill="none" opacity="0.5"/>
+
+  <!-- Subtle shadow under fabric -->
+  <ellipse cx="1640" cy="905" rx="200" ry="20" fill="#b0a8a0" opacity="0.3" filter="url(#r1-soft)"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#140700" opacity="0.2" letter-spacing="3">reverie  still 01  studio, north light</text>
+</svg>

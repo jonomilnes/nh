@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="m1-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6a3a18"/>
+      <stop offset="50%" stop-color="#c87020"/>
+      <stop offset="100%" stop-color="#e09030"/>
+    </linearGradient>
+    <linearGradient id="m1-ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a85818"/>
+      <stop offset="100%" stop-color="#7a3808"/>
+    </linearGradient>
+    <radialGradient id="m1-sun" cx="72%" cy="38%" r="25%">
+      <stop offset="0%" stop-color="#f8c040" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#e08020" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Desert golden hour sky -->
+  <rect width="1920" height="1080" fill="url(#m1-sky)"/>
+  <rect width="1920" height="1080" fill="url(#m1-sun)"/>
+
+  <!-- Ground  desert floor -->
+  <rect x="0" y="540" width="1920" height="540" fill="url(#m1-ground)"/>
+
+  <!-- Horizon line  crisp -->
+  <line x1="0" y1="540" x2="1920" y2="540" stroke="#c06820" stroke-width="2"/>
+
+  <!-- Highway  two-lane, vanishing to right horizon -->
+  <polygon points="820,540 1100,540 1920,750 1920,800 0,700 0,660" fill="#4a2808" opacity="0.7"/>
+  <!-- Road center line -->
+  <polygon points="955,540 965,540 1920,770 1920,780" fill="#c8a020" opacity="0.4"/>
+  <!-- Road shoulder lines -->
+  <polygon points="820,540 840,540 0,662 0,674" fill="#988060" opacity="0.3"/>
+  <polygon points="1080,540 1100,540 1920,798 1920,810" fill="#988060" opacity="0.3"/>
+
+  <!-- Desert scrub  left side -->
+  <ellipse cx="150" cy="535" rx="35" ry="10" fill="#8a4a14" opacity="0.6"/>
+  <ellipse cx="350" cy="542" rx="28" ry="8" fill="#8a4a14" opacity="0.5"/>
+  <ellipse cx="550" cy="537" rx="20" ry="7" fill="#7a4010" opacity="0.55"/>
+
+  <!-- Desert scrub  right side -->
+  <ellipse cx="1450" cy="538" rx="25" ry="8" fill="#8a4a14" opacity="0.5"/>
+  <ellipse cx="1700" cy="535" rx="32" ry="9" fill="#8a4a14" opacity="0.55"/>
+
+  <!-- Distant mesa / butte  right -->
+  <polygon points="1500,280 1600,200 1750,240 1820,300 1920,290 1920,540 1460,540" fill="#7a3808" opacity="0.6"/>
+  <polygon points="1560,300 1620,240 1720,260 1780,310 1820,300 1820,540 1540,540" fill="#6a3006" opacity="0.5"/>
+
+  <!-- Sun glare -->
+  <circle cx="1380" cy="410" r="50" fill="#f8d060" opacity="0.3"/>
+  <circle cx="1380" cy="410" r="120" fill="#f0b040" opacity="0.08"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">meridian  still 01  desert highway, golden hour</text>
+</svg>

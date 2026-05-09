@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="p3-warm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8904a"/>
+      <stop offset="100%" stop-color="#7a4820"/>
+    </linearGradient>
+    <radialGradient id="p3-zenith" cx="50%" cy="0%" r="70%">
+      <stop offset="0%" stop-color="#e0b870" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#c8904a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Warm terracotta base -->
+  <rect width="1920" height="1080" fill="#b87a3a"/>
+  <rect width="1920" height="1080" fill="url(#p3-zenith)"/>
+
+  <!-- Terrace geometry  strong diagonal shadow -->
+  <polygon points="0,0 900,0 1920,1080 0,1080" fill="#a06830" opacity="0.5"/>
+  <polygon points="900,0 1920,0 1920,400" fill="#d0a060" opacity="0.3"/>
+
+  <!-- Iron railing  horizontal bars -->
+  <line x1="0" y1="440" x2="1920" y2="440" stroke="#400e00" stroke-width="8" opacity="0.6"/>
+  <line x1="0" y1="490" x2="1920" y2="490" stroke="#400e00" stroke-width="5" opacity="0.45"/>
+  <line x1="0" y1="530" x2="1920" y2="530" stroke="#400e00" stroke-width="4" opacity="0.35"/>
+  <!-- Railing verticals -->
+  <line x1="300" y1="400" x2="300" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+  <line x1="480" y1="400" x2="480" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+  <line x1="660" y1="400" x2="660" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+  <line x1="840" y1="400" x2="840" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+  <line x1="1020" y1="400" x2="1020" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+  <line x1="1200" y1="400" x2="1200" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+  <line x1="1380" y1="400" x2="1380" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+  <line x1="1560" y1="400" x2="1560" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+  <line x1="1740" y1="400" x2="1740" y2="560" stroke="#400e00" stroke-width="5" opacity="0.5"/>
+
+  <!-- City in background  very soft -->
+  <rect x="0" y="280" width="1920" height="160" fill="#c89050" opacity="0.15"/>
+  <!-- Distant rooftops -->
+  <rect x="200" y="330" width="80" height="50" fill="#904020" opacity="0.3"/>
+  <rect x="400" y="310" width="120" height="70" fill="#904020" opacity="0.25"/>
+  <rect x="700" y="320" width="60" height="60" fill="#904020" opacity="0.28"/>
+  <rect x="900" y="295" width="100" height="85" fill="#904020" opacity="0.25"/>
+  <rect x="1150" y="315" width="90" height="65" fill="#904020" opacity="0.3"/>
+  <rect x="1400" y="305" width="70" height="75" fill="#904020" opacity="0.27"/>
+  <rect x="1620" y="325" width="110" height="55" fill="#904020" opacity="0.25"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">parallels  still 03  afternoon, terrace geometry</text>
+</svg>

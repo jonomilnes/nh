@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="m2-wall" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9a5220"/>
+      <stop offset="60%" stop-color="#c07838"/>
+      <stop offset="100%" stop-color="#7a3e14"/>
+    </linearGradient>
+    <linearGradient id="m2-strata" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b06030"/>
+      <stop offset="30%" stop-color="#a05828"/>
+      <stop offset="60%" stop-color="#c07838"/>
+      <stop offset="100%" stop-color="#8a4820"/>
+    </linearGradient>
+    <radialGradient id="m2-light" cx="70%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="#f0c060" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#b06030" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Canyon wall base  fills most of frame (close shot, looking up) -->
+  <rect width="1920" height="1080" fill="url(#m2-strata)"/>
+  <rect width="1920" height="1080" fill="url(#m2-light)"/>
+
+  <!-- Rock strata  horizontal banding of geological layers -->
+  <rect x="0" y="100" width="1920" height="22" fill="#8a4010" opacity="0.4"/>
+  <rect x="0" y="180" width="1920" height="14" fill="#c07838" opacity="0.3"/>
+  <rect x="0" y="280" width="1920" height="30" fill="#7a3808" opacity="0.45"/>
+  <rect x="0" y="380" width="1920" height="18" fill="#b86828" opacity="0.35"/>
+  <rect x="0" y="460" width="1920" height="26" fill="#6a3206" opacity="0.5"/>
+  <rect x="0" y="560" width="1920" height="20" fill="#c07030" opacity="0.3"/>
+  <rect x="0" y="650" width="1920" height="35" fill="#7a3a0a" opacity="0.5"/>
+  <rect x="0" y="760" width="1920" height="22" fill="#b86028" opacity="0.35"/>
+  <rect x="0" y="860" width="1920" height="16" fill="#6a2e04" opacity="0.4"/>
+  <rect x="0" y="940" width="1920" height="28" fill="#804010" opacity="0.4"/>
+
+  <!-- Surface texture  vertical fracture lines -->
+  <line x1="280" y1="0" x2="240" y2="1080" stroke="#7a3808" stroke-width="2" opacity="0.3"/>
+  <line x1="580" y1="0" x2="560" y2="1080" stroke="#6a3006" stroke-width="3" opacity="0.35"/>
+  <line x1="900" y1="0" x2="880" y2="1080" stroke="#7a3808" stroke-width="2" opacity="0.28"/>
+  <line x1="1200" y1="0" x2="1220" y2="1080" stroke="#6a3006" stroke-width="3" opacity="0.3"/>
+  <line x1="1520" y1="0" x2="1540" y2="1080" stroke="#7a3808" stroke-width="2" opacity="0.3"/>
+  <line x1="1760" y1="0" x2="1780" y2="1080" stroke="#6a3006" stroke-width="2" opacity="0.25"/>
+
+  <!-- Shadow pocket  left side, suggestion of an alcove -->
+  <polygon points="0,0 360,0 280,1080 0,1080" fill="#4a1e04" opacity="0.4"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">meridian  still 02  canyon wall, late afternoon</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="f1-light" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#2a2a2a" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="f1-glow" cx="50%" cy="45%" r="35%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="f1-precise">
+      <feGaussianBlur stdDeviation="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Near-black studio -->
+  <rect width="1920" height="1080" fill="url(#f1-light)"/>
+  <rect width="1920" height="1080" fill="url(#f1-glow)"/>
+
+  <!-- Speaker form  tall, cylindrical, centered -->
+  <!-- Outer housing -->
+  <ellipse cx="960" cy="300" rx="180" ry="30" fill="#1e1e1e"/>
+  <rect x="780" y="300" width="360" height="580" fill="#1a1a1a"/>
+  <ellipse cx="960" cy="880" rx="180" ry="30" fill="#141414"/>
+
+  <!-- Mesh face  fine grid suggesting speaker grille -->
+  <rect x="800" y="310" width="320" height="560" fill="#121212"/>
+  <!-- Subtle horizontal mesh lines -->
+  <line x1="800" y1="350" x2="1120" y2="350" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+  <line x1="800" y1="390" x2="1120" y2="390" stroke="#2a2a2a" stroke-width="1" opacity="0.55"/>
+  <line x1="800" y1="430" x2="1120" y2="430" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+  <line x1="800" y1="470" x2="1120" y2="470" stroke="#2a2a2a" stroke-width="1" opacity="0.55"/>
+  <line x1="800" y1="510" x2="1120" y2="510" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+  <line x1="800" y1="550" x2="1120" y2="550" stroke="#2a2a2a" stroke-width="1" opacity="0.55"/>
+  <line x1="800" y1="590" x2="1120" y2="590" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+  <line x1="800" y1="630" x2="1120" y2="630" stroke="#2a2a2a" stroke-width="1" opacity="0.55"/>
+  <line x1="800" y1="670" x2="1120" y2="670" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+  <line x1="800" y1="710" x2="1120" y2="710" stroke="#2a2a2a" stroke-width="1" opacity="0.55"/>
+  <line x1="800" y1="750" x2="1120" y2="750" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+  <line x1="800" y1="790" x2="1120" y2="790" stroke="#2a2a2a" stroke-width="1" opacity="0.55"/>
+  <line x1="800" y1="830" x2="1120" y2="830" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+
+  <!-- Edge lighting  thin white rim light on left edge -->
+  <line x1="780" y1="300" x2="780" y2="880" stroke="#c8c8c8" stroke-width="1.5" opacity="0.55"/>
+  <!-- Very subtle right edge -->
+  <line x1="1140" y1="300" x2="1140" y2="880" stroke="#484848" stroke-width="1" opacity="0.3"/>
+
+  <!-- Top surface  precise ellipse rim -->
+  <ellipse cx="960" cy="300" rx="180" ry="30" fill="none" stroke="#888888" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Floor shadow  precise ellipse beneath -->
+  <ellipse cx="960" cy="890" rx="200" ry="18" fill="#000000" opacity="0.8"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">frequency  still 01  speaker form, white studio</text>
+</svg>

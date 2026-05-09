@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="f3-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080808"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Black studio  architecture of light -->
+  <rect width="1920" height="1080" fill="url(#f3-bg)"/>
+
+  <!-- Wide horizontal band of light  sweeps from left, center height -->
+  <!-- This is a key lighting instrument  a long thin softbox -->
+  <rect x="0" y="468" width="1920" height="8" fill="#e8e8e8" opacity="0.9"/>
+  <!-- Falloff above and below the beam -->
+  <rect x="0" y="440" width="1920" height="28" fill="#888888" opacity="0.12"/>
+  <rect x="0" y="476" width="1920" height="28" fill="#888888" opacity="0.1"/>
+  <rect x="0" y="408" width="1920" height="32" fill="#444444" opacity="0.06"/>
+  <rect x="0" y="504" width="1920" height="32" fill="#444444" opacity="0.05"/>
+
+  <!-- Speaker pair silhouettes  two tall forms in the light band -->
+  <!-- Left speaker -->
+  <rect x="520" y="200" width="200" height="680" fill="#0a0a0a"/>
+  <!-- Rim light on left speaker  from the light band -->
+  <rect x="518" y="200" width="3" height="680" fill="#c8c8c8" opacity="0.35"/>
+  <!-- Left speaker shadow on floor -->
+  <ellipse cx="620" cy="885" rx="110" ry="12" fill="#000000" opacity="0.8"/>
+
+  <!-- Right speaker -->
+  <rect x="1200" y="200" width="200" height="680" fill="#0a0a0a"/>
+  <!-- Rim light on right speaker -->
+  <rect x="1397" y="200" width="3" height="680" fill="#484848" opacity="0.2"/>
+  <!-- Right speaker shadow on floor -->
+  <ellipse cx="1300" cy="885" rx="110" ry="12" fill="#000000" opacity="0.8"/>
+
+  <!-- Floor plane  barely visible -->
+  <line x1="0" y1="880" x2="1920" y2="880" stroke="#1a1a1a" stroke-width="1" opacity="0.4"/>
+
+  <!-- Light band reflection on floor  very subtle -->
+  <rect x="0" y="880" width="1920" height="4" fill="#505050" opacity="0.15"/>
+  <rect x="0" y="884" width="1920" height="40" fill="#303030" opacity="0.06"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">frequency  still 03  wide shot, geometric shadow</text>
+</svg>

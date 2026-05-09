@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="f2-bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#060606"/>
+      <stop offset="50%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+    <radialGradient id="f2-catchlight" cx="52%" cy="48%" r="15%">
+      <stop offset="0%" stop-color="#e8e8e8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#181818" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Near-black  extreme close-up detail -->
+  <rect width="1920" height="1080" fill="url(#f2-bg)"/>
+
+  <!-- Mesh grid  fills the frame, very close up -->
+  <!-- Horizontal wires -->
+  <line x1="0" y1="120" x2="1920" y2="120" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="200" x2="1920" y2="200" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="280" x2="1920" y2="280" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="360" x2="1920" y2="360" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="440" x2="1920" y2="440" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="520" x2="1920" y2="520" stroke="#3a3a3a" stroke-width="2.5" opacity="0.8"/>
+  <line x1="0" y1="600" x2="1920" y2="600" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="680" x2="1920" y2="680" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="760" x2="1920" y2="760" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="840" x2="1920" y2="840" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="920" x2="1920" y2="920" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+  <line x1="0" y1="1000" x2="1920" y2="1000" stroke="#2e2e2e" stroke-width="2" opacity="0.7"/>
+
+  <!-- Vertical wires -->
+  <line x1="120" y1="0" x2="120" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="280" y1="0" x2="280" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="440" y1="0" x2="440" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="600" y1="0" x2="600" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="760" y1="0" x2="760" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="920" y1="0" x2="920" y2="1080" stroke="#323232" stroke-width="2" opacity="0.7"/>
+  <line x1="1080" y1="0" x2="1080" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="1240" y1="0" x2="1240" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="1400" y1="0" x2="1400" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="1560" y1="0" x2="1560" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="1720" y1="0" x2="1720" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+  <line x1="1880" y1="0" x2="1880" y2="1080" stroke="#282828" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Specular catch-light  top-left of frame -->
+  <rect width="1920" height="1080" fill="url(#f2-catchlight)"/>
+
+  <!-- Bright catch-light at wire intersection -->
+  <circle cx="920" cy="520" r="4" fill="#e8e8e8" opacity="0.8"/>
+  <circle cx="920" cy="520" r="14" fill="#c0c0c0" opacity="0.2"/>
+
+  <!-- Edge shadow vignette  very subtle -->
+  <rect x="0" y="0" width="200" height="1080" fill="#000000" opacity="0.35"/>
+  <rect x="1720" y="0" width="200" height="1080" fill="#000000" opacity="0.35"/>
+  <rect x="0" y="0" width="1920" height="120" fill="#000000" opacity="0.3"/>
+  <rect x="0" y="960" width="1920" height="120" fill="#000000" opacity="0.3"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">frequency  still 02  detail, mesh and light</text>
+</svg>

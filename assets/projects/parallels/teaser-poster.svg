@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="pp-g" cx="60%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#c08040" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#160804" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="#140902"/>
+  <rect width="1920" height="1080" fill="url(#pp-g)"/>
+  <line x1="0" y1="580" x2="1920" y2="580" stroke="#3a1a08" stroke-width="1" opacity="0.4"/>
+  <circle cx="960" cy="540" r="48" fill="none" stroke="#4a2010" stroke-width="1" opacity="0.35"/>
+  <polygon points="950,520 950,560 984,540" fill="#4a2010" opacity="0.35"/>
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">parallels  teaser</text>
+</svg>

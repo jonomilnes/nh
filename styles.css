@@ -1,0 +1,675 @@
+/* ============================================================
+   NIKOLAI HALONEN — DIRECTOR OF PHOTOGRAPHY
+   styles.css
+
+   Design system:
+     Background:  #F8F8F7
+     Text:        #140700
+     Font:        Space Mono (Google Fonts)
+
+   Principles:
+     - No rounded corners
+     - No drop shadows
+     - No gradients in UI chrome
+     - No glassmorphism except the lightbox backdrop
+     - Whitespace and rhythm above all else
+============================================================ */
+
+
+/* ============================================================
+   0. DESIGN TOKENS
+============================================================ */
+
+:root {
+  /* Color palette */
+  --color-bg:           #F8F8F7;
+  --color-text:         #140700;
+  --color-text-muted:   rgba(20, 7, 0, 0.42);
+  --color-divider:      rgba(20, 7, 0, 0.18);
+  --color-divider-hard: #140700;
+
+  /* Typography — Space Mono only */
+  --font:            'Space Mono', 'Courier New', monospace;
+
+  --type-2xs:  9px;
+  --type-xs:   10px;
+  --type-sm:   11px;
+  --type-base: 12px;
+  --type-md:   13px;
+  --type-lg:   14px;
+
+  /* Fluid display sizes */
+  --type-display-sm: clamp(24px, 3.5vw, 48px);
+  --type-display:    clamp(32px, 5vw,   72px);
+
+  --leading-tight:  1.15;
+  --leading-base:   1.5;
+  --leading-relaxed: 1.75;
+
+  --tracking-tighter: -0.03em;
+  --tracking-tight:   -0.01em;
+  --tracking-base:     0.02em;
+  --tracking-wide:     0.08em;
+  --tracking-wider:    0.14em;
+
+  /* Spacing — 8px grid */
+  --sp-1:   8px;
+  --sp-2:  16px;
+  --sp-3:  24px;
+  --sp-4:  32px;
+  --sp-5:  40px;
+  --sp-6:  48px;
+  --sp-8:  64px;
+  --sp-10: 80px;
+  --sp-12: 96px;
+  --sp-16: 128px;
+  --sp-20: 160px;
+  --sp-24: 192px;
+
+  /* Layout */
+  --header-height:    56px;
+  --page-gutter:      clamp(20px, 4.5vw, 72px);
+  --col-gap:          clamp(24px, 3vw,   56px);
+  --project-col-left: 30%;
+
+  /* Z-index scale */
+  --z-media:    5;
+  --z-sticky:   10;
+  --z-header:   50;
+  --z-blur:     60;
+  --z-lightbox: 100;
+  --z-cursor:   200;
+
+  /* Transitions */
+  --ease-out:       cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out:    cubic-bezier(0.45, 0, 0.55, 1);
+
+  --dur-fast:   120ms;
+  --dur-base:   280ms;
+  --dur-slow:   480ms;
+  --dur-slower: 700ms;
+}
+
+
+/* ============================================================
+   1. RESET
+============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* scrollbar-gutter reserves scrollbar space without setting overflow,
+     so position: sticky still references the viewport as its scroll
+     container (overflow-y: scroll on html would break this). */
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font);
+  font-size: var(--type-base);
+  line-height: var(--leading-base);
+  /* overflow: clip hides horizontal overflow without creating a new
+     scroll container — unlike overflow: hidden, it does NOT implicitly
+     change overflow-y to 'auto', which would make body the scroll
+     container and silently break position: sticky on descendants. */
+  overflow-x: clip;
+  /* Default cursor hidden globally — custom cursor is in use */
+  cursor: none;
+}
+
+/* Restore native cursor on touch-only devices */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: none;
+}
+
+button {
+  appearance: none;
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: inherit;
+  cursor: none;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* ============================================================
+   2. CUSTOM CURSOR
+   Tracks mouse directly with no lag — positioned via JS transform.
+   Hidden on touch devices.
+============================================================ */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: var(--z-cursor);
+  /* JS sets transform: translate(x, y) each frame */
+  will-change: transform;
+  /* Hidden until first mousemove event */
+  opacity: 0;
+  transition: opacity var(--dur-base) ease;
+}
+
+.cursor.is-visible {
+  opacity: 1;
+}
+
+/* 4px dot at the precise cursor position */
+.cursor__dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-text);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  transition: transform var(--dur-fast) ease,
+              opacity var(--dur-fast) ease;
+}
+
+/* Text label appears offset to the right of the dot */
+.cursor__label {
+  font-family: var(--font);
+  font-size: var(--type-sm);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text);
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  left: 14px;
+  transform: translateY(-50%);
+  line-height: 1;
+  /* Smooth label text transitions */
+  transition: opacity var(--dur-fast) ease;
+}
+
+/* Collapse invisible labels without layout shift */
+.cursor__label:empty {
+  opacity: 0;
+}
+
+/* Hide entirely on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor {
+    display: none !important;
+  }
+}
+
+
+/* ============================================================
+   3. PROGRESSIVE BOTTOM BLUR
+   Four stacked layers with increasing blur and
+   gradient masks for a smooth progressive effect.
+   pointer-events: none so it never blocks interaction.
+============================================================ */
+
+.bottom-blur {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 130px;
+  z-index: var(--z-blur);
+  pointer-events: none;
+}
+
+.bottom-blur__layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Gradient mask fades out toward the top of each layer */
+  -webkit-mask-image: linear-gradient(to top,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.85) 20%,
+    rgba(0,0,0,0) 100%
+  );
+  mask-image: linear-gradient(to top,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.85) 20%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+/* Layer 1 — lightest blur, tallest reach */
+.bottom-blur__layer--1 {
+  height: 130px;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+/* Layer 2 */
+.bottom-blur__layer--2 {
+  height: 90px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* Layer 3 */
+.bottom-blur__layer--3 {
+  height: 60px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Layer 4 — heaviest blur, tightest at very bottom */
+.bottom-blur__layer--4 {
+  height: 34px;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+
+/* ============================================================
+   4. HEADER
+   Fixed, nearly invisible. Small type.
+   No background fill.
+============================================================ */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  background-color: var(--color-bg);
+}
+
+.site-header__inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--page-gutter);
+}
+
+/* Left group: name + role inline */
+.site-header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.site-header__name {
+  font-size: var(--type-sm);
+  letter-spacing: var(--tracking-wide);
+  font-weight: 400;
+  color: var(--color-text);
+}
+
+.site-header__role {
+  font-size: var(--type-sm);
+  letter-spacing: var(--tracking-wide);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+.site-header__link {
+  font-size: var(--type-sm);
+  letter-spacing: var(--tracking-wide);
+  font-weight: 400;
+  color: var(--color-text);
+  opacity: 0.45;
+  transition: opacity var(--dur-base) ease;
+}
+
+.site-header__link:hover {
+  opacity: 1;
+}
+
+
+/* ============================================================
+   5. PROJECTS
+   Stacked vertical sections, each with a 2-column
+   layout: sticky left info, scrollable right media.
+============================================================ */
+
+/* First project clears the fixed header; subsequent projects
+   rely on their own top padding for spacing. */
+.projects {
+  padding-top: var(--header-height);
+}
+
+/* Individual project entry.
+   Flexbox + align-items: flex-start is the most cross-browser-reliable
+   layout for position: sticky sidebars.
+
+   Vertical padding lives here on the article so both columns
+   share the same breathing room without duplication. */
+.project {
+  display: flex;
+  align-items: flex-start;
+  padding: var(--sp-16) var(--page-gutter);
+  cursor: none;
+}
+
+/* ---- LEFT COLUMN (sticky) ---- */
+
+.project__left {
+  width: var(--project-col-left);
+  flex-shrink: 0;
+  padding-right: var(--col-gap);
+  position: sticky;
+  top: calc(var(--header-height) + var(--sp-6));
+  align-self: flex-start;
+}
+
+.project__title {
+  font-family: var(--font);
+  font-size: clamp(16px, 2.2vw, 30px);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin-bottom: var(--sp-5);
+}
+
+.project__description {
+  font-size: var(--type-sm);
+  letter-spacing: var(--tracking-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text);
+  opacity: 0.72;
+  max-width: 300px;
+  margin-bottom: var(--sp-8);
+}
+
+.project__credits {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project__credit {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  column-gap: var(--sp-2);
+}
+
+.project__credit-role {
+  font-size: var(--type-xs);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-muted);
+}
+
+.project__credit-name {
+  font-size: var(--type-xs);
+  letter-spacing: var(--tracking-base);
+  color: var(--color-text);
+}
+
+/* ---- RIGHT COLUMN (media) ---- */
+
+.project__right {
+  flex: 1;
+  min-width: 0;
+  padding-left: var(--col-gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+/* Individual media item */
+.project__media-item {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(20, 7, 0, 0.04);
+}
+
+.project__media-item img,
+.project__media-item video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* While image is loading, hold the aspect ratio with
+   a subtle placeholder to prevent layout jump */
+.project__media-item img[data-src] {
+  aspect-ratio: 16 / 9;
+}
+
+/* Video teaser — same aspect ratio as stills */
+.project__media-item video {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+
+/* ============================================================
+   8. LIGHTBOX
+   Fullscreen overlay. Opens with opacity fade.
+   Backdrop: blurred scrim matching the brief exactly.
+============================================================ */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-lightbox);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity var(--dur-slow) ease,
+    visibility var(--dur-slow) ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* Scrim with blur — per brief: rgba(248,248,247,0.1) + blur(14px) */
+.lightbox__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(248, 248, 247, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: none;
+}
+
+/* Centered video wrapper */
+.lightbox__inner {
+  position: relative;
+  z-index: 1;
+  width: min(80vw, 1200px);
+  pointer-events: none;
+}
+
+.lightbox__video {
+  width: 100%;
+  /* Vimeo responsive container handles height automatically */
+  pointer-events: all;
+  cursor: none;
+}
+
+/* Vimeo responsive iframe inside lightbox */
+.lightbox__video > div {
+  position: relative;
+}
+
+.lightbox__video iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* ============================================================
+   9. UTILITIES
+============================================================ */
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+/* ============================================================
+   10. MOBILE — ≤ 768px
+   Columns stack. Sticky disabled. Custom cursor off.
+============================================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --header-height:        48px;
+    --page-gutter:          20px;
+    --col-gap:              20px;
+    --project-col-left:     100%;
+  }
+
+  /* Stack columns vertically on mobile */
+  .project {
+    flex-direction: column;
+  }
+
+  .project__left {
+    width: 100%;
+    position: static;
+    align-self: auto;
+    padding-right: 0;
+    /* Extra bottom padding separates info from media on mobile */
+    padding-bottom: var(--sp-4);
+  }
+
+  .project__right {
+    padding-left: 0;
+    gap: var(--sp-3);
+  }
+
+  .project {
+    padding: var(--sp-8) var(--page-gutter);
+  }
+
+  .project__description {
+    max-width: 100%;
+  }
+
+  /* Lightbox: near-full width */
+  .lightbox__inner {
+    width: 95vw;
+  }
+
+  /* Bottom blur: shorter on mobile */
+  .bottom-blur {
+    height: 80px;
+  }
+
+  .bottom-blur__layer--1 { height: 80px; }
+  .bottom-blur__layer--2 { height: 56px; }
+  .bottom-blur__layer--3 { height: 36px; }
+  .bottom-blur__layer--4 { height: 20px; }
+
+  /* Header email hidden on small screens */
+  .site-header__link:first-child {
+    display: none;
+  }
+}
+
+/* ============================================================
+   11. SMALL MOBILE — ≤ 480px
+============================================================ */
+
+@media (max-width: 480px) {
+  .site-header__name,
+  .site-header__role {
+    font-size: var(--type-xs);
+    letter-spacing: var(--tracking-base);
+  }
+
+  /* Hide the role on very small screens to avoid header crowding */
+  .site-header__role {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   12. REDUCED MOTION
+   Respect user's OS-level animation preference.
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  /* Still allow cursor transform (controlled by JS rAF) */
+  .cursor {
+    transition: opacity 0.01ms;
+  }
+}
