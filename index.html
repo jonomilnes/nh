@@ -78,33 +78,13 @@
   <main class="main" id="main">
 
     <!-- HERO SECTION
-         Hero text centered in the initial viewport.
-         The showreel peeks in at the bottom edge.
+         Name and role centered in the opening viewport.
     -->
     <section class="hero" id="hero" aria-label="Introduction">
       <div class="hero__content">
         <div class="hero__text">
           <h1 class="hero__name">nikolai halonen</h1>
           <p class="hero__role">director of photography</p>
-        </div>
-      </div>
-
-      <!-- Showreel
-           Width starts at ~67% (8 cols) and expands to
-           100% as it scrolls to viewport center.
-           The Vimeo Player API mounts into #showreel-player.
-      -->
-      <div class="showreel" id="showreel">
-        <div class="showreel__wrapper" id="showreel-wrapper">
-          <div id="showreel-player"></div>
-          <!-- Transparent overlay captures hover/click events
-               without blocking the Vimeo iframe -->
-          <button
-            class="showreel__hit-area"
-            id="showreel-hit-area"
-            aria-label="Toggle showreel audio"
-            tabindex="0">
-          </button>
         </div>
       </div>
     </section>

@@ -3,30 +3,25 @@
    script.js
 
    Table of contents:
-     1. Configuration & project data
+     1. Project data
      2. Utility functions
-     3. Cursor — smooth lerp follower with text labels
-     4. ShowreelManager — Vimeo background player + mute toggle
-     5. ProjectsRenderer — builds project DOM from data
-     6. LightboxManager — Vimeo fullscreen lightbox
-     7. ScrollHandler — showreel width animation on scroll
-     8. Init — bootstrap on DOMContentLoaded
+     3. Cursor — direct mouse tracking with text labels
+     4. ProjectsRenderer — builds project DOM from data
+     5. LightboxManager — Vimeo fullscreen lightbox
+     6. Init — bootstrap on DOMContentLoaded
 
-   To update content: edit only the PROJECTS array and
-   SHOWREEL_VIMEO_ID at the top. No layout code changes needed.
+   To update content: edit only the PROJECTS array.
+   No layout code changes needed.
 ============================================================ */
 
 
 /* ============================================================
-   1. CONFIGURATION & PROJECT DATA
+   1. PROJECT DATA
 
-   - Replace SHOWREEL_VIMEO_ID with your showreel video ID
    - Replace each project's vimeoId for the lightbox
    - Replace asset paths with your actual images/videos
    - All media paths are relative to index.html
 ============================================================ */
-
-const SHOWREEL_VIMEO_ID = 'REPLACE_WITH_SHOWREEL_ID';
 
 const PROJECTS = [
   {
@@ -163,35 +158,6 @@ const PROJECTS = [
 ============================================================ */
 
 /**
- * Clamp a value within [min, max].
- */
-function clamp(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
-
-/**
- * Linear interpolation between start and end by factor.
- */
-function lerp(start, end, factor) {
-  return start + (end - start) * factor;
-}
-
-/**
- * Map a value from one range to another, clamped.
- */
-function mapRange(value, inMin, inMax, outMin, outMax) {
-  const t = clamp((value - inMin) / (inMax - inMin), 0, 1);
-  return outMin + t * (outMax - outMin);
-}
-
-/**
- * Cubic ease-out: fast start, gentle finish.
- */
-function easeOutCubic(t) {
-  return 1 - Math.pow(1 - t, 3);
-}
-
-/**
  * Returns true if the device uses touch as primary input.
  * Used to disable custom cursor and hover interactions.
  */
@@ -202,42 +168,28 @@ function isTouchDevice() {
 
 /* ============================================================
    3. CURSOR
-   Smoothly follows the mouse via requestAnimationFrame lerp.
+   Tracks the mouse directly with no lag — position updates
+   happen in the mousemove handler for immediate response.
    Label text is set by other modules to reflect context.
 ============================================================ */
 
 class Cursor {
   constructor() {
-    this.el       = document.getElementById('cursor');
-    this.dotEl    = this.el.querySelector('.cursor__dot');
-    this.labelEl  = this.el.querySelector('.cursor__label');
-
-    // Current rendered position (lerped toward target)
-    this.x        = -200;
-    this.y        = -200;
-    // Raw mouse position
-    this.targetX  = -200;
-    this.targetY  = -200;
-
+    this.el           = document.getElementById('cursor');
+    this.labelEl      = this.el.querySelector('.cursor__label');
     this.currentLabel = '';
     this.isVisible    = false;
-    this.rafId        = null;
 
     if (!isTouchDevice()) {
       this._bindEvents();
-      this._tick();
     }
   }
 
   _bindEvents() {
     document.addEventListener('mousemove', (e) => {
-      this.targetX = e.clientX;
-      this.targetY = e.clientY;
+      this.el.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
 
       if (!this.isVisible) {
-        // Snap on first move to avoid a slide-in from off-screen
-        this.x = e.clientX;
-        this.y = e.clientY;
         this.isVisible = true;
         this.el.classList.add('is-visible');
       }
@@ -248,24 +200,8 @@ class Cursor {
     });
 
     document.addEventListener('mouseenter', () => {
-      if (this.isVisible) {
-        this.el.classList.add('is-visible');
-      }
+      if (this.isVisible) this.el.classList.add('is-visible');
     });
-  }
-
-  /**
-   * Animation loop — lerp at ~12% per frame gives a
-   * ~200ms lag at 60fps, which feels premium without
-   * appearing broken.
-   */
-  _tick() {
-    this.x = lerp(this.x, this.targetX, 0.115);
-    this.y = lerp(this.y, this.targetY, 0.115);
-
-    this.el.style.transform = `translate(${this.x}px, ${this.y}px)`;
-
-    this.rafId = requestAnimationFrame(() => this._tick());
   }
 
   setLabel(text) {
@@ -277,135 +213,11 @@ class Cursor {
   clearLabel() {
     this.setLabel('');
   }
-
-  destroy() {
-    if (this.rafId !== null) {
-      cancelAnimationFrame(this.rafId);
-    }
-  }
 }
 
 
 /* ============================================================
-   4. SHOWREEL MANAGER
-   Initializes a Vimeo background player for the hero showreel.
-   Handles mute/unmute toggle and exposes updateWidth() for
-   the scroll handler.
-============================================================ */
-
-class ShowreelManager {
-  constructor(cursor) {
-    this.cursor       = cursor;
-    this.wrapperEl    = document.getElementById('showreel-wrapper');
-    this.hitAreaEl    = document.getElementById('showreel-hit-area');
-    this.playerEl     = document.getElementById('showreel-player');
-
-    this.player       = null;
-    this.isMuted      = true;
-    this.playerReady  = false;
-    this.isTouch      = isTouchDevice();
-
-    this._initPlayer();
-    if (!this.isTouch) {
-      this._bindInteractions();
-    }
-  }
-
-  _initPlayer() {
-    if (typeof Vimeo === 'undefined') {
-      console.warn('Vimeo Player API unavailable — showreel will not load.');
-      return;
-    }
-
-    this.player = new Vimeo.Player(this.playerEl, {
-      id:         SHOWREEL_VIMEO_ID,
-      background: true,   // No controls, autoplay, loop, muted
-      loop:       true,
-      muted:      true,
-      responsive: true,   // Vimeo handles aspect ratio
-      dnt:        true,   // Do not track
-    });
-
-    this.player.ready().then(() => {
-      this.playerReady = true;
-      this.player.setMuted(true);
-      // Trigger play (may be blocked by browser until interaction)
-      this.player.play().catch(() => {});
-    }).catch((err) => {
-      // Expected if Vimeo ID is a placeholder — fail silently
-      console.warn('Showreel player init failed:', err.message);
-    });
-  }
-
-  _bindInteractions() {
-    // Show mute/unmute label on hover
-    this.hitAreaEl.addEventListener('mouseenter', () => {
-      this.cursor.setLabel(this.isMuted ? 'unmute' : 'mute');
-    });
-
-    this.hitAreaEl.addEventListener('mouseleave', () => {
-      this.cursor.clearLabel();
-    });
-
-    // Toggle mute on click
-    this.hitAreaEl.addEventListener('click', () => {
-      this._toggleMute();
-    });
-
-    // Keyboard accessibility: Space/Enter to toggle
-    this.hitAreaEl.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        this._toggleMute();
-      }
-    });
-  }
-
-  _toggleMute() {
-    if (!this.playerReady || !this.player) return;
-
-    this.isMuted = !this.isMuted;
-
-    if (this.isMuted) {
-      this.player.setMuted(true);
-      this.player.setVolume(0);
-    } else {
-      this.player.setMuted(false);
-      this.player.setVolume(1);
-    }
-
-    // Update cursor label to reflect new state
-    this.cursor.setLabel(this.isMuted ? 'unmute' : 'mute');
-  }
-
-  /**
-   * Called on each scroll event.
-   * Maps the showreel's vertical position in the viewport
-   * to a width value between 66.667% and 100%.
-   *
-   * Animation range:
-   *   videoCenter = viewport bottom   → width = 66.667% (8/12 columns)
-   *   videoCenter = viewport center   → width = 100%    (full bleed)
-   */
-  updateWidth() {
-    if (this.isTouch) return;
-
-    const rect        = this.wrapperEl.getBoundingClientRect();
-    const vh          = window.innerHeight;
-    const videoCenter = rect.top + rect.height / 2;
-
-    // progress 0 → 1 as videoCenter moves from vh → vh/2
-    const progress = mapRange(videoCenter, vh, vh * 0.5, 0, 1);
-    const eased    = easeOutCubic(progress);
-    const width    = 66.667 + 33.333 * eased;
-
-    this.wrapperEl.style.width = `${width}%`;
-  }
-}
-
-
-/* ============================================================
-   5. PROJECTS RENDERER
+   4. PROJECTS RENDERER
    Builds project <article> elements from the PROJECTS data
    array and appends them to #projects.
    Lazy-loads images and videos via IntersectionObserver.
@@ -439,10 +251,7 @@ class ProjectsRenderer {
     const left = document.createElement('div');
     left.className = 'project__left';
     left.innerHTML = `
-      <p class="project__index">${project.index}</p>
       <h2 class="project__title">${project.title}</h2>
-      <p class="project__year">${project.year}</p>
-      <p class="project__category">${project.category}</p>
       <p class="project__description">${project.description}</p>
       <ul class="project__credits">
         ${project.credits.map((c) => `
@@ -573,7 +382,7 @@ class ProjectsRenderer {
 
 
 /* ============================================================
-   6. LIGHTBOX MANAGER
+   5. LIGHTBOX MANAGER
    Fullscreen Vimeo player overlay.
    Opens with a smooth opacity fade; closes on ESC, scrim click,
    or external call to .close().
@@ -709,64 +518,12 @@ class LightboxManager {
 
 
 /* ============================================================
-   7. SCROLL HANDLER
-   Requests showreel width update on scroll using
-   requestAnimationFrame batching to avoid layout thrashing.
-============================================================ */
-
-class ScrollHandler {
-  constructor(showreel) {
-    this.showreel = showreel;
-    this.ticking  = false;
-
-    this._bindEvents();
-    // Run once immediately to set correct initial state
-    this._update();
-  }
-
-  _bindEvents() {
-    window.addEventListener('scroll', () => {
-      if (!this.ticking) {
-        requestAnimationFrame(() => {
-          this._update();
-          this.ticking = false;
-        });
-        this.ticking = true;
-      }
-    }, { passive: true });
-
-    // Also update on resize (width percentages depend on viewport)
-    window.addEventListener('resize', () => {
-      if (!this.ticking) {
-        requestAnimationFrame(() => {
-          this._update();
-          this.ticking = false;
-        });
-        this.ticking = true;
-      }
-    }, { passive: true });
-  }
-
-  _update() {
-    this.showreel.updateWidth();
-  }
-}
-
-
-/* ============================================================
-   8. INIT
+   6. INIT
    Bootstrap everything on DOMContentLoaded.
 ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
   const cursor   = new Cursor();
   const lightbox = new LightboxManager(cursor);
-  const showreel = new ShowreelManager(cursor);
-
-  // Render projects before setting up scroll, so the
-  // IntersectionObservers register against real DOM nodes
   new ProjectsRenderer(cursor, lightbox);
-
-  // Scroll handler drives showreel width animation
-  new ScrollHandler(showreel);
 });
