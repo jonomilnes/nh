@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="c3-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#08121e"/>
+      <stop offset="45%" stop-color="#0e2236"/>
+      <stop offset="100%" stop-color="#1a3048"/>
+    </linearGradient>
+    <radialGradient id="c3-horizon" cx="50%" cy="75%" r="50%">
+      <stop offset="0%" stop-color="#2a4a68" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0a1824" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="c3-soften">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <!-- Blue hour sky gradient -->
+  <rect width="1920" height="1080" fill="url(#c3-sky)"/>
+  <rect width="1920" height="1080" fill="url(#c3-horizon)"/>
+
+  <!-- Horizon glow -->
+  <rect x="0" y="520" width="1920" height="80" fill="#2e506e" opacity="0.18" filter="url(#c3-soften)"/>
+
+  <!-- Ground  snow covered, dark -->
+  <rect x="0" y="680" width="1920" height="400" fill="#0c1822"/>
+
+  <!-- Single silhouetted figure  centered -->
+  <!-- Body -->
+  <rect x="942" y="560" width="36" height="120" fill="#040c16"/>
+  <!-- Head -->
+  <circle cx="960" cy="548" r="18" fill="#040c16"/>
+  <!-- Arms -->
+  <line x1="942" y1="590" x2="900" y2="620" stroke="#040c16" stroke-width="10" stroke-linecap="round"/>
+  <line x1="978" y1="590" x2="1020" y2="615" stroke="#040c16" stroke-width="10" stroke-linecap="round"/>
+  <!-- Legs -->
+  <line x1="952" y1="680" x2="940" y2="740" stroke="#040c16" stroke-width="12" stroke-linecap="round"/>
+  <line x1="968" y1="680" x2="980" y2="740" stroke="#040c16" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- Subtle ground shadow of figure -->
+  <ellipse cx="960" cy="745" rx="35" ry="6" fill="#040c16" opacity="0.5"/>
+
+  <!-- Snow texture  horizontal wind lines -->
+  <line x1="0" y1="760" x2="300" y2="758" stroke="#1a3048" stroke-width="1" opacity="0.25"/>
+  <line x1="400" y1="810" x2="800" y2="807" stroke="#1a3048" stroke-width="1" opacity="0.2"/>
+  <line x1="1100" y1="790" x2="1600" y2="788" stroke="#1a3048" stroke-width="1" opacity="0.22"/>
+  <line x1="1700" y1="850" x2="1920" y2="848" stroke="#1a3048" stroke-width="1" opacity="0.18"/>
+
+  <!-- A few stars -->
+  <circle cx="200" cy="100" r="1.2" fill="#a8c0d8" opacity="0.5"/>
+  <circle cx="580" cy="80" r="0.9" fill="#a8c0d8" opacity="0.4"/>
+  <circle cx="940" cy="60" r="1.5" fill="#b8d0e8" opacity="0.6"/>
+  <circle cx="1300" cy="95" r="1.0" fill="#a8c0d8" opacity="0.45"/>
+  <circle cx="1700" cy="70" r="1.2" fill="#a8c0d8" opacity="0.5"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">constellation  still 03  silhouette at the blue hour</text>
+</svg>

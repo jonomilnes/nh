@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="swp-g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e2e3a"/>
+      <stop offset="100%" stop-color="#0a1418"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#swp-g)"/>
+  <line x1="0" y1="560" x2="1920" y2="560" stroke="#2a3e4c" stroke-width="1" opacity="0.5"/>
+  <circle cx="960" cy="540" r="48" fill="none" stroke="#2a3e4c" stroke-width="1" opacity="0.35"/>
+  <polygon points="950,520 950,560 984,540" fill="#2a3e4c" opacity="0.35"/>
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">still water  teaser</text>
+</svg>

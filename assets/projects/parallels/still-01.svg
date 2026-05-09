@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="p1-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a06a"/>
+      <stop offset="100%" stop-color="#7a4a22"/>
+    </linearGradient>
+    <radialGradient id="p1-sun" cx="62%" cy="30%" r="35%">
+      <stop offset="0%" stop-color="#e8c88a" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c8853a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="p1-shadow">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <!-- Warm ochre ground -->
+  <rect width="1920" height="1080" fill="#8a5a28"/>
+
+  <!-- Bleached sky  above arches -->
+  <rect width="1920" height="460" fill="url(#p1-sky)"/>
+  <rect width="1920" height="460" fill="url(#p1-sun)"/>
+
+  <!-- Courtyard floor  tiled grid perspective -->
+  <rect x="0" y="680" width="1920" height="400" fill="#a8784a"/>
+
+  <!-- Tile grid lines  perspective toward vanishing point at center -->
+  <!-- Horizontal lines -->
+  <line x1="0" y1="720" x2="1920" y2="720" stroke="#8a6038" stroke-width="1" opacity="0.35"/>
+  <line x1="0" y1="780" x2="1920" y2="780" stroke="#8a6038" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="860" x2="1920" y2="860" stroke="#8a6038" stroke-width="1" opacity="0.25"/>
+  <line x1="0" y1="960" x2="1920" y2="960" stroke="#8a6038" stroke-width="1" opacity="0.2"/>
+  <!-- Vertical perspective lines -->
+  <line x1="960" y1="680" x2="0" y2="1080" stroke="#8a6038" stroke-width="1" opacity="0.2"/>
+  <line x1="960" y1="680" x2="480" y2="1080" stroke="#8a6038" stroke-width="1" opacity="0.2"/>
+  <line x1="960" y1="680" x2="1440" y2="1080" stroke="#8a6038" stroke-width="1" opacity="0.2"/>
+  <line x1="960" y1="680" x2="1920" y2="1080" stroke="#8a6038" stroke-width="1" opacity="0.2"/>
+
+  <!-- Archway architecture  three repeating arches -->
+  <!-- Left arch -->
+  <rect x="160" y="460" width="280" height="220" fill="#7a4820" opacity="0.85"/>
+  <path d="M 160 460 Q 300 320 440 460" fill="#6e4018" opacity="0.85"/>
+  <rect x="180" y="480" width="240" height="200" fill="#1a0e08" opacity="0.7"/>
+  <path d="M 180 480 Q 300 360 420 480" fill="#1a0e08" opacity="0.7"/>
+
+  <!-- Center arch  largest -->
+  <rect x="760" y="380" width="400" height="300" fill="#7a4820" opacity="0.9"/>
+  <path d="M 760 380 Q 960 200 1160 380" fill="#6e4018" opacity="0.9"/>
+  <rect x="790" y="405" width="340" height="275" fill="#140c06" opacity="0.75"/>
+  <path d="M 790 405 Q 960 238 1130 405" fill="#140c06" opacity="0.75"/>
+
+  <!-- Right arch -->
+  <rect x="1480" y="460" width="280" height="220" fill="#7a4820" opacity="0.85"/>
+  <path d="M 1480 460 Q 1620 320 1760 460" fill="#6e4018" opacity="0.85"/>
+  <rect x="1500" y="480" width="240" height="200" fill="#1a0e08" opacity="0.7"/>
+  <path d="M 1500 480 Q 1620 360 1740 480" fill="#1a0e08" opacity="0.7"/>
+
+  <!-- Shadow cast by arches on floor -->
+  <polygon points="200,680 400,680 600,1080 0,1080" fill="#7a4018" opacity="0.2" filter="url(#p1-shadow)"/>
+  <polygon points="1520,680 1720,680 1920,1080 1320,1080" fill="#7a4018" opacity="0.2" filter="url(#p1-shadow)"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">parallels  still 01  tiled courtyard, midday</text>
+</svg>

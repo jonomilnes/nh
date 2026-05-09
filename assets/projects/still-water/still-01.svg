@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="sw1-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a3540"/>
+      <stop offset="100%" stop-color="#4a5c68"/>
+    </linearGradient>
+    <linearGradient id="sw1-water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3c4e58"/>
+      <stop offset="100%" stop-color="#1a2830"/>
+    </linearGradient>
+    <filter id="sw1-fog">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <!-- Overcast sky -->
+  <rect width="1920" height="1080" fill="url(#sw1-sky)"/>
+
+  <!-- Fog layer -->
+  <rect x="0" y="280" width="1920" height="200" fill="#5a6c78" opacity="0.3" filter="url(#sw1-fog)"/>
+  <rect x="0" y="360" width="1920" height="120" fill="#6a7c88" opacity="0.25" filter="url(#sw1-fog)"/>
+
+  <!-- Distant mountain / fjord wall  left -->
+  <polygon points="0,480 0,200 300,80 500,180 400,480" fill="#2e3e4a" opacity="0.65"/>
+  <polygon points="0,480 300,80 500,180 300,480" fill="#2a3840" opacity="0.5"/>
+
+  <!-- Distant mountain  right -->
+  <polygon points="1920,480 1920,160 1600,60 1300,180 1500,480" fill="#2e3e4a" opacity="0.6"/>
+
+  <!-- Water horizon line -->
+  <rect x="0" y="490" width="1920" height="590" fill="url(#sw1-water)"/>
+  <line x1="0" y1="490" x2="1920" y2="490" stroke="#3a4e5a" stroke-width="1.5"/>
+
+  <!-- Fog over water -->
+  <rect x="0" y="490" width="1920" height="80" fill="#7a8c98" opacity="0.15" filter="url(#sw1-fog)"/>
+
+  <!-- Water reflection  broken horizontal bands -->
+  <line x1="0" y1="540" x2="1920" y2="540" stroke="#3c5060" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="600" x2="1920" y2="600" stroke="#364858" stroke-width="1" opacity="0.25"/>
+  <line x1="0" y1="680" x2="1920" y2="680" stroke="#304050" stroke-width="1" opacity="0.2"/>
+  <line x1="0" y1="780" x2="1920" y2="780" stroke="#2a3848" stroke-width="1" opacity="0.15"/>
+  <line x1="0" y1="900" x2="1920" y2="900" stroke="#243040" stroke-width="1" opacity="0.12"/>
+
+  <!-- Small fishing boat  distant, left -->
+  <rect x="300" y="480" width="60" height="12" fill="#1e2c38"/>
+  <line x1="328" y1="492" x2="328" y2="450" stroke="#1e2c38" stroke-width="2"/>
+  <!-- Mast rigging suggestion -->
+  <line x1="328" y1="450" x2="310" y2="490" stroke="#1e2c38" stroke-width="1" opacity="0.5"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">still water  still 01  fjord at dawn, morning fog</text>
+</svg>

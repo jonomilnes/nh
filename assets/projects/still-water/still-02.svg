@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="sw2-window" cx="52%" cy="42%" r="18%">
+      <stop offset="0%" stop-color="#c8d8e0" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#3a4c58" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sw2-glow">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+
+  <!-- Dark interior  cool grey-blue -->
+  <rect width="1920" height="1080" fill="#1e2c34"/>
+
+  <!-- Barely visible wall texture  vertical planks -->
+  <line x1="300" y1="0" x2="300" y2="1080" stroke="#222e38" stroke-width="1" opacity="0.4"/>
+  <line x1="580" y1="0" x2="580" y2="1080" stroke="#222e38" stroke-width="1" opacity="0.35"/>
+  <line x1="860" y1="0" x2="860" y2="1080" stroke="#222e38" stroke-width="1" opacity="0.4"/>
+  <line x1="1140" y1="0" x2="1140" y2="1080" stroke="#222e38" stroke-width="1" opacity="0.35"/>
+  <line x1="1420" y1="0" x2="1420" y2="1080" stroke="#222e38" stroke-width="1" opacity="0.4"/>
+  <line x1="1700" y1="0" x2="1700" y2="1080" stroke="#222e38" stroke-width="1" opacity="0.35"/>
+
+  <!-- Window glow  soft backlight of overcast exterior -->
+  <rect x="820" y="280" width="280" height="320" fill="#b0c8d8" opacity="0.08" filter="url(#sw2-glow)"/>
+
+  <!-- Window frame  white wood, pale daylight -->
+  <rect x="840" y="295" width="240" height="300" fill="#c8d8e4" opacity="0.12"/>
+  <!-- Window cross -->
+  <line x1="960" y1="295" x2="960" y2="595" stroke="#ccdae6" stroke-width="8" opacity="0.18"/>
+  <line x1="840" y1="445" x2="1080" y2="445" stroke="#ccdae6" stroke-width="8" opacity="0.18"/>
+  <!-- Window light patch on floor -->
+  <polygon points="760,595 1160,595 1260,900 660,900" fill="#b0c8d8" opacity="0.04"/>
+
+  <!-- Overall window radiation -->
+  <rect width="1920" height="1080" fill="url(#sw2-window)"/>
+
+  <!-- Child silhouette seated at window  subtle -->
+  <rect x="900" y="520" width="60" height="80" fill="#141e26" opacity="0.75"/>
+  <circle cx="930" cy="505" r="26" fill="#141e26" opacity="0.75"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">still water  still 02  child at window, overcast</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="c2-aurora" cx="50%" cy="25%" r="60%">
+      <stop offset="0%" stop-color="#1b4060" stop-opacity="0.7"/>
+      <stop offset="60%" stop-color="#0d2235" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#060c14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="c2-aurora-green" x1="0.3" y1="0" x2="0.7" y2="0.5">
+      <stop offset="0%" stop-color="#1a4a3a" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#1e6040" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#0d2a1e" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="c2-soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <!-- Deep night sky -->
+  <rect width="1920" height="1080" fill="#040b12"/>
+
+  <!-- Aurora background glow -->
+  <rect width="1920" height="1080" fill="url(#c2-aurora)"/>
+
+  <!-- Aurora curtain  green tint -->
+  <ellipse cx="820" cy="200" rx="600" ry="300" fill="url(#c2-aurora-green)" filter="url(#c2-soft)"/>
+
+  <!-- Aurora ribbons  organic curved paths -->
+  <path d="M 200 280 Q 500 180 900 240 Q 1300 300 1700 200" stroke="#204a38" stroke-width="80" fill="none" opacity="0.28" filter="url(#c2-soft)"/>
+  <path d="M 300 320 Q 650 220 1000 290 Q 1350 360 1750 250" stroke="#1a3e30" stroke-width="50" fill="none" opacity="0.22" filter="url(#c2-soft)"/>
+  <path d="M 100 260 Q 400 140 850 200 Q 1250 260 1620 160" stroke="#16344a" stroke-width="40" fill="none" opacity="0.3" filter="url(#c2-soft)"/>
+
+  <!-- Stars  scattered points -->
+  <circle cx="120" cy="90" r="1.2" fill="#c8d8e8" opacity="0.7"/>
+  <circle cx="280" cy="55" r="0.9" fill="#c8d8e8" opacity="0.6"/>
+  <circle cx="450" cy="120" r="1.4" fill="#c8d8e8" opacity="0.8"/>
+  <circle cx="620" cy="45" r="0.8" fill="#c8d8e8" opacity="0.5"/>
+  <circle cx="760" cy="100" r="1.1" fill="#c8d8e8" opacity="0.65"/>
+  <circle cx="900" cy="65" r="1.5" fill="#d4e4f4" opacity="0.9"/>
+  <circle cx="1050" cy="90" r="0.9" fill="#c8d8e8" opacity="0.6"/>
+  <circle cx="1180" cy="40" r="1.2" fill="#c8d8e8" opacity="0.7"/>
+  <circle cx="1320" cy="110" r="1.0" fill="#c8d8e8" opacity="0.55"/>
+  <circle cx="1480" cy="70" r="1.4" fill="#c8d8e8" opacity="0.8"/>
+  <circle cx="1600" cy="95" r="0.8" fill="#c8d8e8" opacity="0.5"/>
+  <circle cx="1750" cy="50" r="1.1" fill="#c8d8e8" opacity="0.65"/>
+  <circle cx="1860" cy="115" r="0.9" fill="#c8d8e8" opacity="0.6"/>
+  <circle cx="340" cy="160" r="0.7" fill="#c8d8e8" opacity="0.45"/>
+  <circle cx="1420" cy="155" r="0.7" fill="#c8d8e8" opacity="0.45"/>
+
+  <!-- Horizon  frozen lake -->
+  <rect x="0" y="680" width="1920" height="400" fill="#03070f"/>
+  <rect x="0" y="677" width="1920" height="2" fill="#0c1e30" opacity="0.5"/>
+
+  <!-- Lake reflection of aurora -->
+  <rect x="0" y="680" width="1920" height="400" fill="url(#c2-aurora)" opacity="0.5"/>
+
+  <!-- Treeline -->
+  <polygon points="0,680 0,640 30,618 50,648 75,625 100,655 130,635 160,670 190,645 220,672 250,650 290,678 330,655 370,680" fill="#02060c"/>
+  <polygon points="1560,680 1580,652 1610,628 1640,658 1670,638 1700,665 1730,648 1760,670 1790,655 1820,672 1860,660 1890,678 1920,668 1920,680" fill="#02060c"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">constellation  still 02  aurora over frozen lake</text>
+</svg>

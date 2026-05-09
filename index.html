@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nikolai Halonen — Director of Photography. Feature films, commercials, and editorial work.">
+  <meta name="author" content="Nikolai Halonen">
+
+  <title>Nikolai Halonen — Director of Photography</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nikolai Halonen — Director of Photography">
+  <meta property="og:description" content="Feature films, commercials, and editorial work.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Space Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vimeo Player API — loaded before script.js so API is available on DOMContentLoaded -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ================================================
+       CUSTOM CURSOR
+       Hidden on touch devices via CSS media query.
+       Positioned via JS transform — no top/left needed.
+  ================================================ -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__label" id="cursor-label"></span>
+  </div>
+
+  <!-- ================================================
+       PROGRESSIVE BOTTOM BLUR
+       Fixed overlay creating cinematic blur at the
+       bottom edge of the viewport.
+  ================================================ -->
+  <div class="bottom-blur" aria-hidden="true">
+    <div class="bottom-blur__layer bottom-blur__layer--1"></div>
+    <div class="bottom-blur__layer bottom-blur__layer--2"></div>
+    <div class="bottom-blur__layer bottom-blur__layer--3"></div>
+    <div class="bottom-blur__layer bottom-blur__layer--4"></div>
+  </div>
+
+  <!-- ================================================
+       HEADER
+       Fixed, minimal. Name left, links right.
+  ================================================ -->
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <span class="site-header__name">nikolai halonen</span>
+      <nav class="site-header__nav" aria-label="Contact links">
+        <a href="mailto:hello@nikolaihalonen.com"
+           class="site-header__link"
+           aria-label="Email Nikolai Halonen">
+          hello@nikolaihalonen.com
+        </a>
+        <a href="https://instagram.com/nikolaihalonen"
+           class="site-header__link"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Nikolai Halonen on Instagram">
+          instagram
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================================================
+       MAIN CONTENT
+  ================================================ -->
+  <main class="main" id="main">
+
+    <!-- HERO SECTION
+         Hero text centered in the initial viewport.
+         The showreel peeks in at the bottom edge.
+    -->
+    <section class="hero" id="hero" aria-label="Introduction">
+      <div class="hero__content">
+        <div class="hero__text">
+          <h1 class="hero__name">nikolai halonen</h1>
+          <p class="hero__role">director of photography</p>
+        </div>
+      </div>
+
+      <!-- Showreel
+           Width starts at ~67% (8 cols) and expands to
+           100% as it scrolls to viewport center.
+           The Vimeo Player API mounts into #showreel-player.
+      -->
+      <div class="showreel" id="showreel">
+        <div class="showreel__wrapper" id="showreel-wrapper">
+          <div id="showreel-player"></div>
+          <!-- Transparent overlay captures hover/click events
+               without blocking the Vimeo iframe -->
+          <button
+            class="showreel__hit-area"
+            id="showreel-hit-area"
+            aria-label="Toggle showreel audio"
+            tabindex="0">
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION
+         Rendered dynamically by script.js.
+         Each project is an <article> with sticky left
+         column and scrollable right column.
+    -->
+    <section class="projects" id="projects" aria-label="Selected work"></section>
+
+  </main>
+
+  <!-- ================================================
+       LIGHTBOX
+       Fullscreen overlay with blurred backdrop.
+       Opens on project click; closes on ESC or scrim click.
+       Vimeo player is injected by LightboxManager.
+  ================================================ -->
+  <div class="lightbox"
+       id="lightbox"
+       role="dialog"
+       aria-modal="true"
+       aria-label="Project film"
+       aria-hidden="true">
+
+    <!-- Blurred scrim — clicking this closes the lightbox -->
+    <div class="lightbox__scrim" id="lightbox-scrim"></div>
+
+    <!-- Centered video container -->
+    <div class="lightbox__inner">
+      <div class="lightbox__video" id="lightbox-video"></div>
+    </div>
+
+  </div>
+
+  <!-- Main application script -->
+  <script src="script.js"></script>
+</body>
+</html>

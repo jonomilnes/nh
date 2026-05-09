@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="r3-face" cx="52%" cy="38%" r="35%">
+      <stop offset="0%" stop-color="#e8ddd4" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#d0c8c0" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#b8b0a8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="r3-bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#ddd8d2"/>
+      <stop offset="100%" stop-color="#b8b0a8"/>
+    </radialGradient>
+    <filter id="r3-defocus">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="r3-soft">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <!-- Soft warm grey background  defocused -->
+  <rect width="1920" height="1080" fill="url(#r3-bg)"/>
+
+  <!-- Face highlight  very soft, central -->
+  <ellipse cx="960" cy="400" rx="320" ry="400" fill="url(#r3-face)" filter="url(#r3-defocus)"/>
+
+  <!-- Portrait form  extremely soft, suggested -->
+  <!-- Head/face area in focus center -->
+  <ellipse cx="960" cy="380" rx="180" ry="220" fill="#ddd6ce" opacity="0.6" filter="url(#r3-soft)"/>
+
+  <!-- Eyes  very gentle, barely there -->
+  <ellipse cx="908" cy="352" rx="22" ry="10" fill="#a8a0a0" opacity="0.4" filter="url(#r3-soft)"/>
+  <ellipse cx="1012" cy="352" rx="22" ry="10" fill="#a8a0a0" opacity="0.4" filter="url(#r3-soft)"/>
+
+  <!-- Neck / shoulder suggestion -->
+  <rect x="900" y="580" width="120" height="200" fill="#d4ccc4" opacity="0.5" filter="url(#r3-defocus)"/>
+  <ellipse cx="960" cy="780" rx="300" ry="100" fill="#c8c0b8" opacity="0.4" filter="url(#r3-defocus)"/>
+
+  <!-- Catch-light in eye -->
+  <circle cx="920" cy="346" r="5" fill="#f8f4f0" opacity="0.7" filter="url(#r3-soft)"/>
+
+  <!-- Hair suggestion  upper portion, darker -->
+  <ellipse cx="960" cy="200" rx="200" ry="160" fill="#8a8078" opacity="0.5" filter="url(#r3-defocus)"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#140700" opacity="0.2" letter-spacing="3">reverie  still 03  portrait, soft defocus</text>
+</svg>

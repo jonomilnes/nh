@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="r2-base" x1="0" y1="0" x2="1" y2="0.8">
+      <stop offset="0%" stop-color="#f0ebe4"/>
+      <stop offset="100%" stop-color="#ccc4bc"/>
+    </linearGradient>
+    <radialGradient id="r2-highlight" cx="38%" cy="30%" r="40%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#e0d8d0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="r2-blur">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Warm cream base  close-up fabric detail -->
+  <rect width="1920" height="1080" fill="url(#r2-base)"/>
+  <rect width="1920" height="1080" fill="url(#r2-highlight)"/>
+
+  <!-- Fabric texture  flowing diagonal folds -->
+  <path d="M 0 200 Q 400 240 800 180 Q 1200 120 1600 200 Q 1800 240 1920 220 L 1920 400 Q 1600 380 1200 440 Q 800 500 400 440 Q 200 420 0 460 Z" fill="#ddd8d2" opacity="0.4"/>
+  <path d="M 0 460 Q 300 440 700 500 Q 1100 560 1500 480 Q 1750 440 1920 500 L 1920 680 Q 1600 660 1200 720 Q 800 780 400 700 Q 200 680 0 720 Z" fill="#d4cec8" opacity="0.35"/>
+  <path d="M 0 720 Q 350 700 750 760 Q 1150 820 1550 740 Q 1780 700 1920 750 L 1920 900 Q 1600 880 1200 940 Q 800 1000 400 920 Q 200 900 0 940 Z" fill="#ccc6c0" opacity="0.3"/>
+
+  <!-- Shadow under fabric fold  the crease -->
+  <path d="M 580 0 Q 640 300 600 600 Q 560 900 620 1080 L 680 1080 Q 660 900 700 600 Q 740 300 680 0 Z" fill="#a8a09a" opacity="0.18" filter="url(r2-blur)"/>
+  <path d="M 1200 0 Q 1260 300 1220 600 Q 1180 900 1240 1080 L 1300 1080 Q 1280 900 1320 600 Q 1360 300 1300 0 Z" fill="#a8a09a" opacity="0.15" filter="url(r2-blur)"/>
+
+  <!-- Bright catch-light  thread or button -->
+  <circle cx="760" cy="480" r="6" fill="#ffffff" opacity="0.8"/>
+  <circle cx="760" cy="480" r="18" fill="#ffffff" opacity="0.2" filter="url(#r2-blur)"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#140700" opacity="0.2" letter-spacing="3">reverie  still 02  detail, fabric and shadow</text>
+</svg>

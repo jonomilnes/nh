@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="p2-light" cx="70%" cy="20%" r="45%">
+      <stop offset="0%" stop-color="#c89050" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#200e04" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="p2-glow">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+  </defs>
+
+  <!-- Very dark terracotta background -->
+  <rect width="1920" height="1080" fill="#1c0d06"/>
+  <rect width="1920" height="1080" fill="url(#p2-light)"/>
+
+  <!-- Arch form in shadow  left side dark -->
+  <rect x="0" y="0" width="840" height="1080" fill="#140a04" opacity="0.6"/>
+
+  <!-- Arch opening  bright warm light from upper right -->
+  <path d="M 960 0 Q 1400 0 1600 300 L 1600 1080 L 960 1080 Z" fill="#2a1408" opacity="0.4"/>
+
+  <!-- Light shaft from top right -->
+  <polygon points="1200,0 1920,0 1920,600 1400,400" fill="#c89050" opacity="0.06" filter="url(#p2-glow)"/>
+
+  <!-- Figure silhouette  left third, portrait orientation -->
+  <!-- Body in arch shadow -->
+  <rect x="460" y="300" width="90" height="500" fill="#0a0604" opacity="0.9"/>
+  <circle cx="505" cy="278" r="44" fill="#0a0604" opacity="0.9"/>
+  <!-- Subtle rim light on figure from right -->
+  <line x1="550" y1="300" x2="550" y2="800" stroke="#8a5030" stroke-width="3" opacity="0.3"/>
+
+  <!-- Arch columns -->
+  <rect x="190" y="0" width="40" height="1080" fill="#260e06" opacity="0.7"/>
+  <rect x="820" y="0" width="40" height="1080" fill="#260e06" opacity="0.7"/>
+
+  <!-- Warm ground reflection -->
+  <rect x="0" y="900" width="1920" height="180" fill="#381806" opacity="0.3"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">parallels  still 02  portrait in arch shadow</text>
+</svg>

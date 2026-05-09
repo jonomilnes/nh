@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <radialGradient id="c1-glow" cx="28%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#1a3a5c" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#060d15" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="c1-floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1520" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#04090e" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="c1-blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <!-- Base night sky -->
+  <rect width="1920" height="1080" fill="#070e17"/>
+
+  <!-- Atmospheric glow  upper left, cold blue -->
+  <rect width="1920" height="1080" fill="url(#c1-glow)"/>
+
+  <!-- Horizon / frozen lake reflection -->
+  <rect x="0" y="640" width="1920" height="440" fill="#050c14"/>
+  <rect x="0" y="636" width="1920" height="3" fill="#0e2035" opacity="0.6"/>
+
+  <!-- Cabin window  warm amber light source -->
+  <rect x="320" y="490" width="88" height="66" fill="#c8803a" opacity="0.22" filter="url(#c1-blur)"/>
+  <rect x="348" y="510" width="32" height="22" fill="#d4923f" opacity="0.55"/>
+  <line x1="364" y1="510" x2="364" y2="532" stroke="#a06028" stroke-width="1" opacity="0.6"/>
+  <line x1="348" y1="521" x2="380" y2="521" stroke="#a06028" stroke-width="1" opacity="0.6"/>
+
+  <!-- Treeline silhouette -->
+  <polygon points="0,640 0,580 40,560 55,600 80,540 100,580 130,520 155,575 180,530 200,570 230,510 255,560 280,525 300,570 330,540 360,580 390,545 420,590 440,560 460,595 490,550 510,580 530,555 560,600 580,565 610,610 640,580 660,620 700,600 720,640" fill="#04080e"/>
+  <polygon points="680,640 700,600 730,570 760,610 790,580 830,620 860,595 890,630 920,610 950,640" fill="#04080e"/>
+  <polygon points="1200,640 1220,605 1250,575 1280,615 1310,585 1340,625 1370,600 1400,635 1430,615 1460,640" fill="#04080e"/>
+  <polygon points="1500,640 1520,600 1560,570 1590,610 1620,580 1660,620 1700,605 1730,635 1760,615 1800,645 1840,625 1880,640 1920,630 1920,640" fill="#04080e"/>
+
+  <!-- Lake ice reflection  faint horizontal lines -->
+  <line x1="0" y1="680" x2="1920" y2="680" stroke="#0e2035" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="730" x2="1920" y2="730" stroke="#0e2035" stroke-width="1" opacity="0.2"/>
+  <line x1="0" y1="790" x2="1920" y2="790" stroke="#0e2035" stroke-width="1" opacity="0.15"/>
+  <line x1="0" y1="870" x2="1920" y2="870" stroke="#0e2035" stroke-width="1" opacity="0.1"/>
+
+  <!-- Floor gradient -->
+  <rect width="1920" height="1080" fill="url(#c1-floor)"/>
+
+  <!-- Caption -->
+  <text x="60" y="1044" font-family="'Courier New', monospace" font-size="16" fill="#f8f8f7" opacity="0.2" letter-spacing="3">constellation  still 01  interior, cabin window</text>
+</svg>
